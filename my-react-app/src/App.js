@@ -5,17 +5,21 @@ import {
     RouterProvider,
     Route,
     Outlet,
+    Navigate,
 } from "react-router-dom";
 import Navbar from "./components/navbar/navbar"
 import LeftBar from "./components/leftBar/leftBar";
 import RightBar from "./components/rightBar/rightBar";
 import Home from "./pages/home/home"
 import Profile from "./pages/profile/profile"
+import { Children } from "react";
 
 
 
  
 function App() {
+
+    const currentUser = false;
 
     const Layout = () => {
         return (
@@ -35,10 +39,23 @@ function App() {
             )
     }
 
+    const ProtectedRoute = ({ children })=> {
+
+        if (!currentUser) {
+            return <Navigate to = "/login/"/>;
+        }
+            return children;
+
+    };
+
     const router = createBrowserRouter([
         {
-            path: "/",
-            element: <Layout />,
+                    path: "/",
+                element:(
+                <ProtectedRoute>
+                    <Layout />
+                </ProtectedRoute>
+                ),
             children: [
                 {
                     path: "/",
