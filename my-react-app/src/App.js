@@ -19,7 +19,7 @@ import { Children } from "react";
  
 function App() {
 
-    const currentUser = false;
+    const currentUser = true;
 
     const Layout = () => {
         return (
@@ -42,7 +42,7 @@ function App() {
     const ProtectedRoute = ({ children })=> {
 
         if (!currentUser) {
-            return <Navigate to = "/login/"/>;
+            return <Navigate to="/login" />;
         }
             return children;
 
