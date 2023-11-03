@@ -13,6 +13,7 @@ import RightBar from "./components/rightBar/rightBar";
 import Home from "./pages/home/home"
 import Profile from "./pages/profile/profile"
 import { Children } from "react";
+import "./style.scss"
 
 
 
@@ -23,7 +24,7 @@ function App() {
 
     const Layout = () => {
         return (
-            <div>
+            <div className="theme-dark">
                 <Navbar />
                 <div style={{ display:"flex" }}>
 
