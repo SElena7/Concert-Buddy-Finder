@@ -4,6 +4,7 @@
     "\\my-react-app",
     "\\my-react-app\\src",
     "\\my-react-app\\src\\components",
+    "\\my-react-app\\src\\context",
     "\\my-react-app\\src\\pages"
   ],
   "PreviewInSolutionExplorer": false

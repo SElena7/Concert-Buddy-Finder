@@ -16,15 +16,16 @@ import { Children } from "react";
 import "./style.scss"
 import { useContext } from "react";
 import { DarkModeContext } from "./context/DarkModeContext";
-
+import { AuthContext } from "./context/authContext";
 
 
  
 function App() {
 
-    const currentUser = true;
+    //const currentUser = true;
 
     const { darkMode } = useContext(DarkModeContext);
+    const { currentUser } = useContext(AuthContext);
 
     const Layout = () => {
         return (
