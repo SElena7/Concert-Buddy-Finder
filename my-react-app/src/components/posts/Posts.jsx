@@ -10,7 +10,7 @@ const Posts = () => {
             id: 1,
             userId: 1,
             name: "Jane Doe",
-            profilePic: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            profilePic: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             img:"https://images.pexels.com/photos/2869354/pexels-photo-2869354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
@@ -18,7 +18,7 @@ const Posts = () => {
             id: 2,
             userId: 2,
             name: "Jane Doe",
-            profilePic: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            profilePic: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             img: "https://images.pexels.com/photos/2869354/pexels-photo-2869354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
@@ -26,7 +26,7 @@ const Posts = () => {
             id: 3,
             userId: 3,
             name: "Jane Doe",
-            profilePic: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            profilePic: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             img: "https://images.pexels.com/photos/2869354/pexels-photo-2869354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
@@ -34,7 +34,7 @@ const Posts = () => {
             id: 4,
             userId: 4,
             name: "Jane Doe",
-            profilePic: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            profilePic: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             img: "https://images.pexels.com/photos/2869354/pexels-photo-2869354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
@@ -42,7 +42,7 @@ const Posts = () => {
             id: 5,
             userId: 5,
             name: "Jane Doe",
-            profilePic: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            profilePic: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             img: "https://images.pexels.com/photos/2869354/pexels-photo-2869354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
@@ -50,7 +50,7 @@ const Posts = () => {
             id: 6,
             userId: 6,
             name: "Jane Doe",
-            profilePic: "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            profilePic: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             img: "https://images.pexels.com/photos/2869354/pexels-photo-2869354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
