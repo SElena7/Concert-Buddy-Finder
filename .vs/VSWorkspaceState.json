@@ -1,13 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\my-react-app",
-    "\\my-react-app\\src",
-    "\\my-react-app\\src\\components",
+    "\\api",
+    "\\api\\controllers",
+    "\\api\\routes",
     "\\my-react-app\\src\\components\\posts",
-    "\\my-react-app\\src\\components\\stories",
-    "\\my-react-app\\src\\context",
-    "\\my-react-app\\src\\pages"
+    "\\my-react-app\\src\\components\\stories"
   ],
+  "SelectedNode": "\\api\\controllers\\auth.js",
   "PreviewInSolutionExplorer": false
 }
