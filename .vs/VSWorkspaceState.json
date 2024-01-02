@@ -4,9 +4,10 @@
     "\\api",
     "\\api\\controllers",
     "\\api\\routes",
-    "\\my-react-app\\src\\components\\posts",
-    "\\my-react-app\\src\\components\\stories"
+    "\\my-react-app\\src",
+    "\\my-react-app\\src\\components",
+    "\\my-react-app\\src\\components\\posts"
   ],
-  "SelectedNode": "\\api\\controllers\\auth.js",
+  "SelectedNode": "\\api\\controllers\\post.js",
   "PreviewInSolutionExplorer": false
 }

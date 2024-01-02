@@ -1,5 +1,7 @@
 import Login from "./pages/login/login"
 import Register from "./pages/register/register"
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
 import {
     createBrowserRouter,
     RouterProvider,
@@ -19,7 +21,9 @@ import { DarkModeContext } from "./context/DarkModeContext";
 import { AuthContext } from "./context/authContext";
 
 
- 
+const queryClient = new QueryClient()
+
+
 function App() {
 
     //const currentUser = true;
@@ -29,22 +33,24 @@ function App() {
 
     const Layout = () => {
         return (
-            <div className={`theme-${darkMode ? "dark" : "light"}`}>
-                <Navbar />
-                <div style={{ display:"flex" }}>
+            <QueryClientProvider client={queryClient}>
+                    <div className={`theme-${darkMode ? "dark" : "light"}`}>
+                        <Navbar />
+                        <div style={{ display:"flex" }}>
 
-                    <LeftBar />
-                    <div style={{flex:6}}>
-                        <Outlet />
-                    </div>
+                            <LeftBar />
+                            <div style={{flex:6}}>
+                                <Outlet />
+                            </div>
                     
-                    <RightBar/>
+                            <RightBar/>
 
-                </div>
+                        </div>
 
 
-            </div>
-            
+                    </div>
+
+            </QueryClientProvider>
             )
     }
 

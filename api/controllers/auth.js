@@ -31,6 +31,7 @@ export const register = (req, res) => {
         });
     });
 };
+
 export const login = (req, res) => {
     const q = "SELECT * FROM users WHERE username = ?";
 
@@ -41,15 +42,15 @@ export const login = (req, res) => {
         const checkPassword = bcrypt.compareSync(
             req.body.password,
             data[0].password
-        )
+        );
 
         if (!checkPassword)
-            return res.status(400).json("Wrong password, or username.");
-
+            return res.status(400).json("Wrong password or username!");
 
         const token = jwt.sign({ id: data[0].id }, "secretkey");
 
         const { password, ...others } = data[0];
+
         res
             .cookie("accessToken", token, {
                 httpOnly: true,
