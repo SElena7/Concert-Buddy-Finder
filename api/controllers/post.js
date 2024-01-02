@@ -1,15 +1,25 @@
-import { db } from "../connect.js"
+    import { db } from "../connect.js"
+import jwt from "jsonwebtoken";
 
+    export const getPosts = (req, res) => {
+        const token = req.cookies.accessToken;
 
-export const getPosts = (req, res) => {
-    const q =
-        `SELECT p.*,u.id AS u_id, name, profilePic FROM posts AS p JOIN users AS u ON (u.id = p.u_id)`
+        if (!token) return res.status(401).json("Not logged in!")
+        jwt.verify(token, "secretkey", (err, userInfo) => {
+            if (err) return res.status(403).json("Token is not valid!")
 
-    db.query(q, (err, data) => {
+            const q =
+                `SELECT p.*,u.id AS u_id, name, profilePic FROM posts AS p JOIN users AS u ON (u.id = p.u_id)
+              LEFT JOIN relationships AS r ON (p.u_id = r.followedUserId) WHERE r.followerUserId= ? OR p.u_id =?`
 
-        if (err) return res.status(500).json(err);
-        return res.status(200).json(data);
+            console.log("SQL Query:", q);
+            db.query(q, [userInfo.id, userInfo.id], (err, data) => {
 
-    })
+                if (err) return res.status(500).json(err);
+                return res.status(200).json(data);
 
-}
+            })
+        })
+    
+
+    }

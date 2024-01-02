@@ -21,11 +21,16 @@ const Login = () => {
         e.preventDefault();
         try {
             await login(inputs);
-            navigate("/")
+            navigate("/");
         } catch (err) {
-            setErr(err.response.data);
+            if (err.response && err.response.data) {
+                setErr(err.response.data);
+            } else {
+                setErr("An error occurred during login.");
+            }
         }
     };
+
 
     return (
         <div className="login">
@@ -57,7 +62,7 @@ const Login = () => {
                             name="password"
                             onChange={handleChange}
                         />
-                        {err && err}
+                        {err && <div className="error-message">{err}</div>}
                         <button onClick={handleLogin}>Login</button>
                     </form>
                 </div>
