@@ -13,7 +13,7 @@ import moment from "moment";
                 `SELECT p.*,u.id AS u_id, name, profilePic FROM posts AS p JOIN users AS u ON (u.id = p.u_id)
               LEFT JOIN relationships AS r ON (p.u_id = r.followedUserId) WHERE r.followerUserId= ? OR p.u_id =?`
 
-            console.log("SQL Query:", q);
+            
             db.query(q, [userInfo.id, userInfo.id], (err, data) => {
 
                 if (err) return res.status(500).json(err);

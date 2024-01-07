@@ -9,9 +9,25 @@ import LanguageIcon from "@mui/icons-material/Language";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Posts from "../../components/posts/Posts"
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
+import { useLocation } from "react-router-dom";
 
 const Profile = () => {
 
+
+
+	const u_id = parseInt(useLocation().pathname.split("/")[2]);
+
+	const { isLoading, error, data } = useQuery({
+		queryKey: ["user"],
+		queryFn: async () => {
+			const res = await makeRequest.get("/users/find/" + u_id);
+			return res.data;
+		},
+	});
+
+	console.log(data)
 
 	return (
 
