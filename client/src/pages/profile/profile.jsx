@@ -15,11 +15,8 @@ import { useLocation } from 'react-router-dom';
 import { AuthContext } from "../../context/authContext";
 import { useContext, useState } from "react";
 
-
 const Profile = () => {
-
 	const { currentUser } = useContext(AuthContext);
-
 	const u_id = parseInt(useLocation().pathname.split("/")[2]);
 
 	const { isLoading, error, data } = useQuery({
@@ -30,21 +27,48 @@ const Profile = () => {
 		},
 	});
 
+	const { isLoading: risLoading, data: relationshipData } = useQuery({
+		queryKey: ["relationship"],
+		queryFn: async () => {
+			const res = await makeRequest.get("/relationships?followedUserId=" + u_id);
+			return res.data;
+		},
+	});
+
+	const queryClient = useQueryClient();
+
+	const mutation = useMutation({
+		mutationKey: "following",
+		mutationFn: (liked) => {
+			if (liked) return makeRequest.delete("/relationships?u_id=" + u_id);
+			return makeRequest.post("/relationships", { u_id });
+		},
+		onSuccess: () => {
+			queryClient.invalidateQueries(["user"]);
+		},
+	});
+
+	const handleFollow = () => {
+		// Add a conditional check for relationshipData
+		if (relationshipData && relationshipData.includes(currentUser.id)) {
+			mutation.mutate(true);
+		} else {
+			mutation.mutate(false);
+		}
+	};
+
 	// Add conditional checks for loading, error, and data
 	if (isLoading) {
-		return <p>Loading...</p>; // You can display a loading message while data is being fetched.
+		return <p>Loading...</p>;
 	}
 
 	if (error) {
-		return <p>Error: {error.message}</p>; // You can display an error message if there's an issue fetching the data.
+		return <p>Error: {error.message}</p>;
 	}
 
 	if (!data) {
 		return <p>No data available</p>;
 	}
-
-	// Now you can safely access data.profilePic
-	console.log(data.profilePic);
 
 
 	return (
@@ -88,8 +112,14 @@ const Profile = () => {
 							<LanguageIcon />
 								<span>{ data.website }</span>
 						</div>
-					</div>
-						{u_id === currentUser.id ? (<button>update</button>):<button>follow</button>}
+									</div>
+									{isLoading ? "loading.." : u_id === currentUser.id ? (<button>update</button>) : (
+
+										<button onClick={handleFollow}>
+
+										{relationshipData.includes(currentUser.id)
+											? "Following" : "Follow"}
+									</button>)}
 					</div>
 				<div className="right">
 					<EmailOutlinedIcon />
