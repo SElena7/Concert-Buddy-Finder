@@ -11,11 +11,14 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Posts from "../../components/posts/Posts"
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
+import { AuthContext } from "../../context/authContext";
+import { useContext, useState } from "react";
+
 
 const Profile = () => {
 
-
+	const { currentUser } = useContext(AuthContext);
 
 	const u_id = parseInt(useLocation().pathname.split("/")[2]);
 
@@ -27,14 +30,33 @@ const Profile = () => {
 		},
 	});
 
-	console.log(data)
+	// Add conditional checks for loading, error, and data
+	if (isLoading) {
+		return <p>Loading...</p>; // You can display a loading message while data is being fetched.
+	}
+
+	if (error) {
+		return <p>Error: {error.message}</p>; // You can display an error message if there's an issue fetching the data.
+	}
+
+	if (!data) {
+		return <p>No data available</p>;
+	}
+
+	// Now you can safely access data.profilePic
+	console.log(data.profilePic);
+
 
 	return (
 
 		<div className="profile">
+			{isLoading ? (
+				"loading"
+			) : (
+				<>
 			<div className="images">
-				<img src="https://images.pexels.com/photos/3618362/pexels-photo-3618362.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className="cover" />
-				<img src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className="profilePic" />
+				<img src={data.coverPic} className="cover" />
+				<img src={data.profilePic} className="profilePic" />
 			</div>
 			<div className="profileContainer">
 				<div className="uInfo">
@@ -56,18 +78,18 @@ const Profile = () => {
 						</a>
 					</div>
 					<div className="center">
-					<span>Jane Doe</span>
+						<span>{data.name }</span>
 					<div className="info">
 						<div className="item">
 							<PlaceIcon />
-							<span>USA</span>
+								<span>{data.city}</span>
 						</div>
 						<div className="item">
 							<LanguageIcon />
-							<span>jane.doe</span>
+								<span>{ data.website }</span>
 						</div>
 					</div>
-					<button>follow</button>
+						{u_id === currentUser.id ? (<button>update</button>):<button>follow</button>}
 					</div>
 				<div className="right">
 					<EmailOutlinedIcon />
@@ -75,7 +97,9 @@ const Profile = () => {
 					</div>
 				</div>
 			<Posts/>
-			</div>
+						</div>
+				</>
+			)}
 		</div>
 
 
